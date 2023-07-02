@@ -24,7 +24,7 @@ $(function () {
 let todaysDate = dayjs().format('YYYY-MM-DD');
 let daySchedule = localStorage.daySchedule ? JSON.parse(localStorage.daySchedule) : [];
 
-let startTime = 8; // 9am 
+let startTime = 8; // 8am 
 let endTime = 17; // 5pm
 
 function createDaySchedule(){
