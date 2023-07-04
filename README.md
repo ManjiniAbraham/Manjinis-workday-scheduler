@@ -10,7 +10,7 @@ NA
 
 Screenshots from Live site
 
-![Main Page](assets/images/MainPage.png)
+![Main Page](/images/MainPage.png)
 
 Application URL: https://manjiniabraham.github.io/manjinis-workday-scheduler/
 
