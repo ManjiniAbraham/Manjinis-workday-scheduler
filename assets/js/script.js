@@ -3,6 +3,7 @@
 // in the html.
 $(function () {
 
+
   // Update the current time and date every second
   setInterval(updateDateTime, 1000);
 
@@ -12,23 +13,28 @@ $(function () {
   // setup the hour blocks
   setupDaySchedule();
 
+  // get the day's schedule from the stores
+  getDaySchedule();
+
   // fill with tasks that are stored
   fillDaySchedule();
 
-  // adding click even for all save buttons
-  $("button[class*='saveBtn']").on("click", saveSchedule)
+  // capture the click event for all save buttons on the page
+  $("button[class*='saveBtn']").on("click", saveSchedule);
+
 
 });
 
 // setup the main variables
-let todaysDate = dayjs().format('YYYY-MM-DD');
-let daySchedule = localStorage.daySchedule ? JSON.parse(localStorage.daySchedule) : [];
 
-let startTime = 8; // 8am 
+let todaysDate = dayjs().format('dddd MMMM D YYYY'); 
+
+let daySchedule = [];
+let startTime = 9; // 9am 
 let endTime = 17; // 5pm
 
 function createDaySchedule(){
-
+  
   // create all the div elements for the hours schedule block based on startTime and endTime. Use day.js function to format the actual hour for the current date. 
   for (startTime; startTime <= endTime; startTime++) {
 
@@ -56,6 +62,14 @@ function setupDaySchedule(){
       $(this).addClass('present').removeClass('future past');
     }
   });
+}
+
+
+// get the days schedule if that's available in the localStorage
+function getDaySchedule() {
+  if (localStorage.getItem(todaysDate) !== null) {
+    daySchedule = JSON.parse(localStorage.getItem(todaysDate));
+  }
 }
 
 // fill the hours with tasks if available
@@ -88,19 +102,15 @@ function saveSchedule(e){
     }
   }
 
-  localStorage.daySchedule = JSON.stringify(daySchedule);
-  console.log(JSON.stringify(daySchedule));
-
+  // store 
+  localStorage.setItem(todaysDate, JSON.stringify(daySchedule));
   
 }
 
 // update the page with the current date.
 function updateDateTime() {
 
-  // Get the current time and format it using Day.js
-  var currentTime = dayjs().format('dddd MMMM D YYYY');
-
   // Update the current time and date in the HTML
-  $('#currentDay').text(currentTime);
+  $('#currentDay').text(todaysDate);
 
 }
