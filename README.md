@@ -11,6 +11,7 @@ NA
 Screenshots from Live site
 
 ![Main Page](/images/MainPage.png)
+![Work-Day-Scheduler](https://github.com/ManjiniAbraham/manjinis-workday-scheduler/assets/133930922/528267a5-c2a2-47c9-bf5a-de73f94fe11b)
 
 Application URL: https://manjiniabraham.github.io/manjinis-workday-scheduler/
 
